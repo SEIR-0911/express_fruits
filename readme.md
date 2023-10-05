@@ -61,7 +61,12 @@ app.get('/hello', (req, res) => {
   res.send('hello world!')
 
 })
-```
+
+    // app.get('/hello', (req, res) => {
+    //     console.log('hello world!')
+    //     res.send('hello world')
+    // })
+    // ```
 
 #### `/greet/:name`
 `GET` `/greet/:name` should return a greeting with the supplied name, e.g., `'Why hello there, <name>!'`
@@ -69,10 +74,27 @@ app.get('/hello', (req, res) => {
 Recall you can access the URL parameters with `req.params`
 
 
+    <!-- app.get('/greet/:name', (req, res) => {
+        res.send({
+            Greeting: `Why hello there, ${req.params.name}`
+        })
+    }) -->
+
+
 #### `/five`
 `GET` `/five` should return an array of the numbers from 1-5
 
 Remember that you can create variables above your response
+
+<!-- 
+  app.get('/five', (req, res) => 
+      res.send(
+
+          [1, 2, 3, 4, 5])
+  ) -->
+
+
+
 
 
 ### Fruit Routes
@@ -99,12 +121,55 @@ app.get('/fruits/:name', (req, res) => {
   // HINT - you can use a higher-order array method 
 })
 ```
+
+
+  <!-- app.get('/fruits/:name', (req, res) => {
+          fruitsData = [
+              { 'name': 'Lindsay', 'fruit': 'apple' },
+              { 'name': 'John', 'fruit':'orange' },
+              { 'name': 'Paul', 'fruit':'mango' },
+              { 'name': 'Mark', 'fruit':  'pineapple' },
+              { 'name': 'George', 'fruit': 'strawberry' }
+          ]
+      const targetFruitName = req.params.name
+      const fruitMatch = fruitsData.find(fruit => fruit.name === targetFruitName)
+
+      if (fruitMatch){
+          res.send({fruit: fruitMatch.fruit})
+      } else {
+          res.send('No fruit matches this name...☹️')
+      } 
+    -->
+
+
+
+
+
+
 #### `/veggies`
 
 With a working route to show an array of fruits, and an individual fruit, lets take this same concept and make another route that returns an array of vegetables, then try to create a route for the individual ones
 
 Note : Tomato, pepper, avocado, and cucumber are all fruits, not vegetables. If you put any of these, or other seed-bearing produce into your veggies link, you will not receive credit for this assignment. I'm sorry, but your instructor is just kind of a jerk sometimes
 
+
+    <!-- app.get('/veggies/:veggieName?', (req, res) => {
+        veggies = [
+            'broccoli', 'cabbage', 'carrots', 'beets', 'artichoke', 'celery', 'chicory','cauliflower', 'corn', 'daikon', 'arugula lettuce', 'parsnips', 'romaine lettuce', 'kale', 'peas', 'potatoes', 'rutabaga', 'yam'
+        ]
+        const veggieName = req.params.veggieName
+        
+        if (veggieName) {
+            const chosenVeggie = veggies.find(veggie => veggie === veggieName)
+            if(chosenVeggie){
+                res.send(`${chosenVeggie}`)
+            } else {
+                res.send('No veggies match your request... Maybe some chocolate cake instead?')
+            }
+        }else {
+            res.send(veggies.join(','))
+        } 
+        })-->
 
 ___
 
