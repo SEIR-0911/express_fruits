@@ -17,19 +17,39 @@ app.get('/five', (req, res) => {
     res.send(fiveArray)
 })
 
+const fruitsArray = ['apples', 'oranges', 'grapes', 'strawberries', 'cherries']
+
 app.get('/fruits/:name', (req, res) => {
-    let fruitsArray = ['apples', 'oranges', 'grapes', 'strawberries', 'cherries']
-    res.send(`${req.params.name}`)
+    const fruitName = req.params.name
+    const fruit = fruitsArray.find(fruit => fruit.toLowerCase() === fruitName.toLowerCase())
+    if (fruit) {
+        res.send(`${req.params.name}`)
+    }
+    else {
+        res.send(`Fruit not found`)
+    }
+})
+
+const veggiesArray = ['carrots', 'asparagus', 'peas', 'potatoes', 'beets']
+
+app.get('/veggies', (req, res) => {
+    res.send(veggiesArray)
 })
 
 app.get('/veggies/:name', (req, res) => {
-    let veggiesArray = ['carrots', 'asparagus', 'peas', 'potatoes', 'beets']
-    res.send(`${req.params.name}`)
+    const veggiesName = req.params.name
+    const veggies = veggiesArray.find(veggies => veggies.toLowerCase() === veggiesName.toLowerCase())
+    if (veggies) {
+        res.send(req.params.name)
+    }
+    else {
+        res.send(`Fruit not found`)
+    }
 })
 
 // BONUS
 
-app.get('/fruits/sort', (req, res) => {
+app.get('/fruits/sort/sort', (req, res) => {
     let fruitsArray = ['apples', 'oranges', 'grapes', 'strawberries', 'cherries']
     fruitsArray.sort()
     res.send(fruitsArray)
