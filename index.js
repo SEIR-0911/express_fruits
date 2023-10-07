@@ -1,6 +1,5 @@
 const express = require("express");
 const PORT = process.env.PORT || 3001;
-
 const app = express();
 
 app.listen(PORT, () => console.log(`Serving up delicious fruits on port ${PORT} 🍒`));
@@ -22,19 +21,16 @@ app.get(`/greet/:username`, (req, res) => {
 
 });
 
-//GET /five should return an array of the numbers from 1-5
 const fiveNum = [1, 2, 3, 4, 5];
 
+//GET /five should return an array of the numbers from 1-5
 app.get('/five', (req, res) => {
     console.log(fiveNum);
     res.send(`[ ${fiveNum} ]`);
 });
 
-//GET /fruits should return an array of fruits that you create.
 
 const fruits = ["Mongo", "Apple", "Banana", "Kiwi", "Cherry", "Strawberry", "Blueberry", "Raspberry", "Fig", "Gooseberry", "Citrus", "Grape"];
-
-
 
 //Bonus GET /fruits/sort should return the fruits array sorted alphabetically using .sort(). had to move it to the top so it checks if user wants to sort
 
@@ -42,6 +38,8 @@ app.get('/fruits/sort/', (req, res, next) => {
     console.log("can you see me!");
     res.send(fruits.sort().join());
 });
+
+//GET /fruits should return an array of fruits that you create.
 
 app.get('/fruits', (req, res) => {
     console.log("returning an array of fruets: ", fruits);
