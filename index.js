@@ -26,7 +26,6 @@ app.get('/fruits', (req, res) => {
 
 app.get('/fruits/:name', (req, res) => {
     const name = req.params.name;
-    const fruits = ['apple', 'banana', 'orange', 'strawberry', 'kiwi']
     const fruit = fruits.find(fruit => fruit === name)
   
     if (fruit) {
