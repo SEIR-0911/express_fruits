@@ -58,7 +58,7 @@ app.get('/veggies/:name', (req, res) => {
 //     )
 // })
 
-//bonus is commented out, because I could not figure out how to get it to run simultaneously with the other fruit calls.
+
 const fruitArray =  ['banana', 'orange', 'apple', 'peach', 'mango']
 app.get('/fruits/:name', (req, res) => {
     if(req.params.name == 'sort') {
